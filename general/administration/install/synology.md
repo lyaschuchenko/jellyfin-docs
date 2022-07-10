@@ -1,11 +1,11 @@
 ---
 uid: admin-install-synology
-title: Installing on Synology
+title: Встановлення на Synology
 ---
 
-# Installing on Synology
+# Встановлення на Synology
 
-For [Synology](https://www.synology.com/en-us/dsm), Jellyfin is installed using Docker.
+Для [Synology](https://www.synology.com/en-us/dsm), Jellyfin встановлюється за допомогою Docker.
 
 ![Installing Synology](~/images/install-synology-1.png)
 
@@ -13,22 +13,22 @@ For [Synology](https://www.synology.com/en-us/dsm), Jellyfin is installed using 
 
 ![Installing Synology](~/images/install-synology-3.png)
 
-Create the container.
+Створіть контейнер.
 
 ![Installing Synology](~/images/install-synology-4.png)
 
 ![Installing Synology](~/images/install-synology-5.png)
 
-Use Advanced Settings to add mount points to your media and config.
+Використовуйте додаткові параметри, щоб додати точки монтування до вашого носія та конфігурації.
 
 ![Installing Synology](~/images/install-synology-6.png)
 
 ![Installing Synology](~/images/install-synology-7.png)
 
-Host Mode is required for HdHR and DLNA. Use bridge mode if running multiple instances.
+Режим хоста потрібен для HdHR і DLNA. Використовуйте режим моста, якщо запущено кілька екземплярів.
 
 ![Installing Synology](~/images/install-synology-8.png)
 
 ![Installing Synology](~/images/install-synology-9.png)
 
-Browse to `http://SERVER_IP:8096` to access the web client.
+Перейдіть до `http://SERVER_IP:8096`, щоб отримати доступ до веб-клієнта.
