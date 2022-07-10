@@ -4,30 +4,30 @@ title: Збірка з джерельного коду
 ---
 <!-- markdownlint-disable MD029 ol-prefix -->
 
-# Source
+# Джерельний код
 
-As an alternative to using [binary packages](xref:admin-installing), you can build Jellyfin from source.
+Як альтернатива використанню [binary packages](xref:admin-installing), ви можете зібрати Jellyfin з джерельного коду.
 
-Jellyfin supports several methods of building for different platforms and instructions for all supported platforms are below.
+Jellyfin підтримує кілька методів створення для різних платформ, і інструкції для всіх підтримуваних платформ наведено нижче.
 
-All package builds begin with these two steps:
+Усі збірки пакетів починаються з цих двох кроків:
 
-1. Clone the repository.
+1. Клонуйте репозиторій.
 
     ```sh
     git clone https://github.com/jellyfin/jellyfin.git
     cd jellyfin
     ```
 
-2. Initialize the submodules.
+2. Ініціалізуйте підмодулі.
 
     ```sh
     git submodule update --init
     ```
 
-## Container image
+## Образ контейнеру
 
-1. Build the container image using Docker or Podman.
+1. Створіть образ контейнера за допомогою Docker або Podman.
 
     ```sh
     docker build -t $USERNAME/jellyfin .
@@ -39,7 +39,7 @@ All package builds begin with these two steps:
     podman build -t $USERNAME/jellyfin .
     ```
 
-2. Run Jellyfin in a new container using Docker or Podman from the built container image.
+2. Запустіть Jellyfin у новому контейнері за допомогою Docker або Podman зі створеного образу контейнера.
 
     ```sh
     docker run -d -p 8096:8096 $USERNAME/jellyfin
@@ -51,9 +51,9 @@ All package builds begin with these two steps:
     podman run -d -p 8096:8096 $USERNAME/jellyfin
     ```
 
-## Linux or MacOS
+## Linux чи MacOS
 
-3. Use the included `build` script to perform builds.
+3. Використовуйте сценарій `build`, що входить до комплекту, для виконання збірок.
 
     ```sh
     ./build --help
@@ -61,57 +61,57 @@ All package builds begin with these two steps:
     ./build <platform> all
     ```
 
-4. The resulting archives can be found at `../bin/<platform>`.
+4. Отримані архіви можна знайти за адресою `../bin/<platform>`.
 
-> [!NOTE]
-> This will very likely be split out into a separate repository at some point in the future.
+> [!ПРИМІТКА]
+> Дуже ймовірно, що в майбутньому це буде виділено в окреме сховище.
 
 ## Windows
 
-3. Install dotnet SDK 6.0 from [Microsoft's Website](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and [install Git for Windows](https://gitforwindows.org/).
-   You must be on Powershell 3 or higher.
+3. Установіть Dotnet SDK 6.0 з [Microsoft's Website](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) і [install Git for Windows](https://gitforwindows.org/).
+   Ви повинні мати Powershell 3 або новішої версії.
 
-4. From Powershell set the execution policy to unrestricted.
+4. У Powershell установіть політику виконання на необмежену.
 
     ```powershell
     set-executionpolicy unrestricted
     ```
 
-5. If you are building a version of Jellyfin newer than 10.6.4, you will need to download the build script from a separate repository.
+5. Якщо ви створюєте версію Jellyfin, новішу за 10.6.4, вам потрібно буде завантажити сценарій збірки з окремого репозиторію.
 
    ```powershell
    git clone https://github.com/jellyfin/jellyfin-server-windows.git windows
    ```
 
-6. Run the Jellyfin build script.
+6. Запустіть сценарій збірки Jellyfin.
 
     ```powershell
     windows\build-jellyfin.ps1 -verbose
     ```
 
-    * The `-WindowsVersion` and `-Architecture` flags can optimize the build for your current environment; the default is generic Windows x64.
+    * Прапорці `-WindowsVersion` і `-Architecture` можуть оптимізувати збірку для вашого поточного середовища; за замовчуванням — стандартна Windows x64.
 
-    * The `-InstallLocation` flag lets you select where the compiled binaries go; the default is `$Env:AppData\Jellyfin-Server\`.
+    * Прапорець `-InstallLocation` дозволяє вибрати, куди зберігатимуться скомпільовані двійкові файли; типовим є `$Env:AppData\Jellyfin-Server\`.
 
-    * The `-InstallFFMPEG` flag will automatically pull the stable `ffmpeg` binaries appropriate to your architecture (x86/x64 only for now) from [BtbN](https://github.com/BtbN/FFmpeg-Builds/releases) and place them in your Jellyfin directory.
+    * Прапор `-InstallFFMPEG` автоматично витягне стабільні двійкові файли `ffmpeg`, які відповідають вашій архітектурі (наразі лише x86/x64) з [BtbN](https://github.com/BtbN/FFmpeg-Builds/releases) і розмістить їх у вашому каталозі Jellyfin.
 
-    * The `-InstallNSSM` flag will automatically pull the stable `nssm` binary appropriate to your architecture (x86/x64 only for now) from [NSSM's Website](https://nssm.cc/) and place it in your Jellyfin directory.
+    * Прапорець `-InstallNSSM` автоматично витягне стабільний двійковий файл `nssm`, який відповідає вашій архітектурі (наразі лише x86/x64) з [веб-сайту NSSM](https://nssm.cc/) і розмістить його у вашому каталозі Jellyfin.
 
-7. (Optional) Use [NSSM](https://nssm.cc) to configure Jellyfin to run as a service.
+7. (Необов’язково) Використовуйте [NSSM](https://nssm.cc), щоб налаштувати Jellyfin для роботи як служби.
 
-8. Jellyfin is now available in the default directory, or whichever directory you chose.
+8. Jellyfin тепер доступний у каталозі за замовчуванням або в будь-якому іншому каталозі, який ви вибрали.
 
-    * Start it from PowerShell.
+    * Запустіть його з PowerShell.
 
         ```powershell
         &"$env:APPDATA\Jellyfin-Server\jellyfin.exe"
         ```
 
-    * Start it from CMD.
+    * Запустіть його з CMD.
 
         ```cmd
         %APPDATA%\Jellyfin-Server\jellyfin.exe
         ```
 
-> [!NOTE]
-> This will very likely be split out into a separate repository at some point in the future.
+> [!ПРИМІТКА]
+> Дуже ймовірно, що в майбутньому це буде виділено в окреме сховище.
