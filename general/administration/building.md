@@ -1,6 +1,6 @@
 ---
 uid: admin-building
-title: Building from Source
+title: Збірка з джерельного коду
 ---
 <!-- markdownlint-disable MD029 ol-prefix -->
 
